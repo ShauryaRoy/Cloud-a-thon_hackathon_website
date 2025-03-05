@@ -13,7 +13,7 @@ function RotatingSphere() {
   });
   return (
     <mesh ref={meshRef}>
-      <sphereGeometry args={[8, 32, 32]} />
+      <sphereGeometry args={[12, 32, 32]} /> {/* Reduced sphere size */}
       <meshBasicMaterial color="white" wireframe transparent opacity={0.1} />
     </mesh>
   );
@@ -45,29 +45,36 @@ function Hero() {
   return (
     <>
       <Navbar />
-      <section className="relative mt-20 h-screen bg-black flex flex-col items-center justify-center overflow-hidden">
-        <div className="relative flex items-center justify-center">
+      <section className="relative min-h-screen bg-black flex flex-col items-center justify-center overflow-hidden pt-24 pb-12 px-4"> {/* Added padding and responsive height */}
+        <div className="relative flex items-center justify-center w-full max-w-6xl">
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <Canvas style={{ width: "300px", height: "300px" }} camera={{ position: [0, 0, 20] }}>
+            <Canvas className="w-full h-[400px] md:h-[400px]" camera={{ position: [0, 0, 20] }}>
               <ambientLight intensity={0.5} />
               <RotatingSphere />
             </Canvas>
           </div>
-          <h1 className="relative z-10 text-sky-50 text-6xl md:text-8xl lg:text-9xl font-bold ">
+          <h1 className="relative z-10 text-sky-50 text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-center px-4">
             Cloud-A-Thon
           </h1>
-
         </div>
-        <h3 className="font-rubik-doodle  font-bold text-white mt-10 text-2xl">Build IT. Deploy IT. Repeat</h3>
 
-        <p className="font-rubik-doodle  text-4xl md:text-6xl font-semibold mt-8 text-sky-50 flex gap-6 md:gap-12">
+        <h3 className="font-rubik-doodle font-bold text-white mt-6 md:mt-10 text-xl md:text-2xl text-center">
+          Build IT. Deploy IT. Repeat
+        </h3>
+
+        <p className="font-rubik-doodle text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mt-6 md:mt-8 text-sky-50 flex flex-wrap justify-center gap-4 md:gap-8">
           <span>{timeleft.days}D</span>
           <span>{timeleft.hours}H</span>
           <span>{timeleft.minutes}M</span>
           <span>{timeleft.seconds}S</span>
         </p>
-        <div className="mt-16">
-          <img className="w-[500px]" src="src/assets/toxi-logo.png" alt="Logo" />
+
+        <div className="mt-8 md:mt-12 px-4 w-full flex justify-center">
+          <img
+            className="w-full max-w-[400px] md:max-w-[500px]"
+            src="src/assets/toxi-logo.png"
+            alt="Logo"
+          />
         </div>
       </section>
     </>
